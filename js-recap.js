@@ -67,7 +67,7 @@ while (dice !== 6) {
 }
 
 for (let i = 0; i < 10; i++) {
-  console.log('CIAO', i)
+  // console.log('CIAO', i)
 }
 
 for (let i = 0; i < myArr.length; i++) {
@@ -76,3 +76,101 @@ for (let i = 0; i < myArr.length; i++) {
 }
 
 // forEach, map, filter e reduce
+// forEeach esegue una lista di istruzioni per ogni elemento dell'array
+// NON ha un valore di ritorno!
+myArr.forEach((element, i) => {
+  console.log('FOREACH', element, i) // viene stampato 4 volte
+  // i sarebbe l'indice dell'elemento, ce l'avete su forEach, map e filter
+})
+
+// map serve a TRASFORMARE un array in un NUOVO ARRAY
+const newArr = myArr.map((element) => {
+  return element.charAt(0).toUpperCase()
+})
+console.log('newArr', newArr)
+
+// filter serve a FILTRARE un array
+// filter ritorna sempre un NUOVO ARRAY, la cui lunghezza è al max pari alla lunghezza
+// dell'array originale
+const numbersArr = [5, 78, 2.4, 67, 1]
+
+const justAbove10 = numbersArr.filter((element) => {
+  // if (element > 10) {
+  //   return true
+  // } else {
+  //   return false
+  // }
+  return element > 10
+})
+console.log('justAbove10', justAbove10)
+
+// reduce
+// reduce TRASFORMA un ARRAY in un NUMERO
+const total = myArr.reduce((acc, element) => {
+  return acc + element.length
+}, 0)
+
+console.log('TOTAL', total)
+
+const fourButtons = document.querySelectorAll('section > div > button')
+console.log(fourButtons)
+
+// fourButtons è un ARRAY di 4 bottoni
+fourButtons.forEach((element, i) => {
+  // element è il singolo bottone!
+  element.addEventListener('click', function () {
+    console.log(element)
+  })
+})
+
+const myForm = document.getElementById('main-form')
+myForm.addEventListener('submit', function (e) {
+  e.preventDefault()
+  console.log('INVIO IL FORM')
+})
+
+// OBJECTS
+// gli oggetti in JS sono delle collezioni di COPPIE chiave:valore
+
+const school = {
+  name: 'EPICODE',
+  courseLengthInMonths: 6,
+  'teacher-name': 'Stefano',
+  epic: true,
+}
+
+// recuperiamo i valori dell'oggetto
+// DOT NOTATION
+school.name // 'EPICODE'
+
+// SQUARE BRACKETS NOTATION
+school['teacher-name'] // 'Stefano'
+
+const variable = 'epic'
+
+school.variable // undefined
+school[variable] // -> school['epic'] -> true
+
+school.market = 'Italy'
+delete school.market
+
+let a = 10
+let b = a // 10
+
+a = 20
+console.log(b) // 10
+
+let objA = {
+  name: 'Mario',
+}
+
+let objB = objA // :O
+console.log(objB.name) // 'Mario'
+
+objA.name = 'Luigi'
+console.log(objB.name) // ?
+
+const realObjB1 = Object.assign({}, objA) // VERA COPIA DI objA
+const realObjB2 = {
+  ...objA, // tutte le proprietà di objA
+} // VERA COPIA DI objA
